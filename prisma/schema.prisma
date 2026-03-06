@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Gender {
+  Male
+  Female
+  Castrated
+}
+
+model Cow {
+  id                  String   @id @default(uuid())
+  uniqueId            String   @unique
+  species             String
+  breed               String
+  dob                 DateTime
+  gender              Gender
+  ownerName           String
+  ownerDigitalId      String
+  location            String
+  animalImage         String   @default("")
+  vaccinationRecords  Json
+  weightHistory       Json
+  medicalTreatments   Json
+  feedType            String
+  reproductiveHistory Json
+  movementLogs        Json
+  collateralStatus    Boolean  @default(false)
+  finalValue          Decimal
+  slaughterExportData Json
+
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
