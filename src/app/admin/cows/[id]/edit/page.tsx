@@ -25,10 +25,17 @@ export default async function EditCowPage({ params }: { params: Promise<{ id: st
     return <div className="p-10 text-center">Livestock not found</div>;
   }
 
-  const headersList = await headers();
-  const host = headersList.get("host");
-  const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
-  const publicUrl = `${protocol}://${host}/cow/${cow.id}`;
+  // Use NEXT_PUBLIC_APP_URL for production QR codes, fall back to current host for dev
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
+  let publicUrl: string;
+  if (baseUrl) {
+    publicUrl = `${baseUrl}/cow/${cow.id}`;
+  } else {
+    const headersList = await headers();
+    const host = headersList.get("host");
+    const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
+    publicUrl = `${protocol}://${host}/cow/${cow.id}`;
+  }
 
   return (
     <div className="container mx-auto py-10 px-4 md:px-0">
