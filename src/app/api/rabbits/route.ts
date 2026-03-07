@@ -31,13 +31,13 @@ export async function GET() {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const cows = await prisma.cow.findMany({
+    const rabbits = await prisma.rabbit.findMany({
       orderBy: { createdAt: "desc" }
     });
     
-    return NextResponse.json(cows);
+    return NextResponse.json(rabbits);
   } catch (error) {
-    console.error("GET /api/cows error:", error);
+    console.error("GET /api/rabbits error:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
@@ -51,7 +51,7 @@ export async function POST(req: Request) {
 
     const data = await req.json();
     
-    const cow = await prisma.cow.create({
+    const rabbit = await prisma.rabbit.create({
       data: {
         uniqueId: generateUniqueId(),
         species: data.species,
@@ -74,9 +74,9 @@ export async function POST(req: Request) {
       }
     });
 
-    return NextResponse.json(cow, { status: 201 });
+    return NextResponse.json(rabbit, { status: 201 });
   } catch (error) {
-    console.error("POST /api/cows error:", error);
+    console.error("POST /api/rabbits error:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }

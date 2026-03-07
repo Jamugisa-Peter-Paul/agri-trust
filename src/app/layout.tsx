@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Agri-Trust",
-  description: "Secure Livestock Tracking Platform",
+  description: "Secure Rabbit Tracking Platform",
 };
 
 export default function RootLayout({

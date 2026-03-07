@@ -1,12 +1,12 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import { CowForm } from "@/components/admin/CowForm";
+import { RabbitForm } from "@/components/admin/RabbitForm";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
-export default async function NewCowPage() {
+export default async function NewRabbitPage() {
   const session = await getServerSession(authOptions);
 
   if (!session) {
@@ -22,12 +22,14 @@ export default async function NewCowPage() {
           </Button>
         </Link>
       </div>
-
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-3xl font-bold text-green-900 tracking-tight mb-2">Register New Livestock</h1>
-        <p className="text-slate-500 mb-8">Enter the details of the new animal to add it to the Agri-Trust registry.</p>
-        
-        <CowForm />
+      
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-green-900 tracking-tight">Register New Rabbit</h1>
+        <p className="text-slate-500 mt-1">Enter the details for the new rabbit. An Agri-Trust ID will be automatically generated.</p>
+      </div>
+      
+      <div className="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-slate-200">
+        <RabbitForm />
       </div>
     </div>
   );

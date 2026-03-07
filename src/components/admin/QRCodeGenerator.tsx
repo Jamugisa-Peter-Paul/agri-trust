@@ -41,7 +41,7 @@ export function QRCodeGenerator({ url, title }: { url: string; title: string }) 
               <div style="text-align:center;">
                 <h2 style="font-family:sans-serif; color:#166534;">${title}</h2>
                 <img src="${imgData}" style="width: 300px; height: 300px;" />
-                <p style="font-family:monospace; margin-top:20px; color:#64748b;">Agri-Trust Livestock Registry</p>
+                <p style="font-family:monospace; margin-top:20px; color:#64748b;">Agri-Trust Rabbitry Registry</p>
                 <p style="font-family:monospace; font-size:12px; color:#94a3b8; word-break:break-all;">${url}</p>
               </div>
               <script>

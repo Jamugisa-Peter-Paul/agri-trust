@@ -13,7 +13,7 @@ enum Gender {
   Castrated
 }
 
-model Cow {
+model Rabbit {
   id                  String   @id @default(uuid())
   uniqueId            String   @unique
   species             String
